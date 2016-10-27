@@ -1,0 +1,18 @@
+{
+  "name": "watson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@10.21.11.251:f2e/watson.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdoc": "^3.4.2"
+  }
+}

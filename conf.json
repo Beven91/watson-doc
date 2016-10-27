@@ -1,0 +1,25 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "source": {
+        "include": [ /* array of paths to files to generate documentation for */ ],
+        "exclude": [ /* array of paths to exclude */ ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "templates": {
+        "default": {
+            "staticFiles": {
+                "include": [
+                    "./myproject/static"
+                ]
+            }
+        }
+    }
+}
