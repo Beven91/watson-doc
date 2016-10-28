@@ -7,19 +7,12 @@
         ]
     },
     "source": {
-        "include": [ /* array of paths to files to generate documentation for */ ],
-        "exclude": [ /* array of paths to exclude */ ],
-        "includePattern": ".+\\.js(doc|x)?$",
-        "excludePattern": "(^|\\/|\\\\)_"
+        "include": ["src/base/type.js"],
+        "exclude": [ /* array of paths to exclude */ ]
     },
     "plugins": [],
     "templates": {
-        "default": {
-            "staticFiles": {
-                "include": [
-                    "./myproject/static"
-                ]
-            }
-        }
+        "cleverLinks": false,
+        "monospaceLinks": false
     }
 }
