@@ -1,0 +1,25 @@
+<div class="method">
+    <h1 class="title fn"><%-ctx.name%></h1>
+    <div class="description">
+        <%-description.full%>
+    </div>
+    <%
+        for(var i=0,k=tags.length;i<k;i++){ 
+            var tag = tags[i];
+            switch(tag.type){
+                case 'param':
+                %>
+                <%-include('parameters.ejs',tag)%>
+                <%
+                break;
+                case 'example':
+                 %>
+                <%-include('example.ejs',tag)%>
+                <%
+                break;
+                default:
+                break;
+            }
+        }
+    %>
+</div>
