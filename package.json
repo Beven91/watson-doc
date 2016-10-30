@@ -1,21 +1,23 @@
 {
-  "name": "watson",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "doc": "",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@10.21.11.251:f2e/watson.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dox": "^0.9.0",
-    "ejs": "^2.5.2",
-    "ncp": "^2.0.0"
-  }
+    "name": "watson",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@10.21.11.251:f2e/watson.git"
+    },
+    "bin": {
+        "watson": "./bin/waton"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dox": "^0.9.0",
+        "ejs": "^2.5.2",
+        "ncp": "^2.0.0"
+    }
 }

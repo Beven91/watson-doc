@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var program = require('commander');
+var path = require('path');
+var fs = require('fs');
+var pkg = require('../package');
+var watson = require('../index.js');
+
+var baseDir = process.cwd();
+
+// options
+program
+    .version(pkg.version)
+    .option('-n, --title', 'doc title')
+    .option('-v, --version', 'doc version')
+    .option('-t, --target', 'target files or target nodejs module name')
+    .option('-l, --loader', 'loader type eg:module,dir')
+    .option('-e, --ext', 'ext filter express eg: .js or RegExp')
+    .option('-o, --out', 'doc out directory')
+
+
+// parse argv
+program.parse(process.argv);
+
+program.target = program.target || baseDir;
+watson.make(program);

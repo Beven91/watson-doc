@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>链尚网</title>
+    <title><%=pgk.name%>文档</title>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Expires" content="0">
@@ -20,19 +20,33 @@
 </head>
 <body class="layout">
 <div class="layout-header">
-		<h3 class="title">链尚网前端框架文档<span class="version">(v1.0.1)  &nbsp;&nbsp;</span></h3>
+        <%
+            var version = pgk.version || '';
+            version = version.replace(/\s/g,'')!=''?'('+version+')':'';
+        %>
+		<h3 class="title"><%=pgk.name%><span class="version">&nbsp;<%=version%> &nbsp;&nbsp;</span></h3>
 		<ul class="nav">
-			<li class="nav-item">
-				<a href="javascript:void(0)" data-nav="core" data-target="core">
+
+            <% 
+                var repository = pgk.repository || {};
+                var type=repository.type;
+                var url = repository.url || '';
+                if (url.replace(/\s/g,'')!=''){
+            %>
+            <li class="nav-item">
+				<a target="_blank" href="<%=url.replace('git:','http:')%>" >
 					<span class="font mdfont icon-zhishiku"></span>
-					<span>基础库</span>
+					<span><%=type%></span>
 				</a>
 			</li>
+            <%
+                }
+            %>
 		</ul>
 	</div>
 	<div class="layout-left">
 		<div class="manifest">
-			<a class="link classify icon">&#xe79e;基础库</a>
+			<a class="link classify icon">&#xe79e;API列表</a>
             <% for(var i=0,k=all.length;i<k;i++){
                 var mModule  = all[i];
                 var cls = mModule.name ===name?"current":""; 

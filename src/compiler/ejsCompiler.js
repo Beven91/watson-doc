@@ -11,7 +11,7 @@ var fs = require('fs');
 /**
  * ejs 编译工具
  */
-function EJSCompiler() { }
+function EJSCompiler() {}
 
 /**
  * 编译指定文件输出到指定目录
@@ -19,13 +19,15 @@ function EJSCompiler() { }
  * @param data 视图数据
  * @param outfile
  */
-EJSCompiler.prototype.compile = function (file, data, outfile) {
+EJSCompiler.prototype.compile = function(file, data, outfile) {
     var buf = read(file);
     data = data || {};
-    data.filename = path.resolve(file);
+    data.filename = (file);
     var htmls = ejs.render(buf, data);
     ensureDir(path.dirname(outfile));
-    fs.writeFileSync(outfile, htmls, { encoding: 'utf8' });
+    fs.writeFileSync(outfile, htmls, {
+        encoding: 'utf8'
+    });
 }
 
 /**
@@ -34,7 +36,7 @@ EJSCompiler.prototype.compile = function (file, data, outfile) {
  * @param data 视图数据
  * @returns String 
  */
-EJSCompiler.prototype.render = function (file, data) {
+EJSCompiler.prototype.render = function(file, data) {
     var buf = read(file);
     data = data || {};
     data.filename = path.resolve(file);
@@ -56,7 +58,9 @@ function ensureDir(dir) {
  * @returns String
  */
 function read(file) {
-    return new String(fs.readFileSync(file, { encoding: 'utf8' }));
+    return new String(fs.readFileSync(file, {
+        encoding: 'utf8'
+    }));
 }
 
 module.exports = new EJSCompiler();
