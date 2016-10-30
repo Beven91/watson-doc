@@ -30,8 +30,7 @@ DocModuleLoader.prototype.load = function(context) {
     }
     //设置pgk
     context.pgk = this.package(context.target);
-    var moduleDirNM = path.join(context.pgk.dir, 'node_modules');
-    return this.searchModule(targetModule, files, context, moduleDirNM);
+    return this.searchModule(targetModule, files, context, context.pgk.dir);
 }
 
 /**
