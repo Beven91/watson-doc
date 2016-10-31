@@ -7,7 +7,11 @@
 
 ### 二、安装
 
-    npm install watson --save-dev -g
+    npm install watsons -g
+
+    或者
+
+    npm install watsons --save-dev
     
      
 ### 三、用例
