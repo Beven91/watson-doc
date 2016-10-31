@@ -1,8 +1,8 @@
-## node-web-dev
+## watson
 
 ### 一、简介
 
-基于dox的文档生成工具，用于生成一个nodejs结构项目。
+基于[dox](https://github.com/tj/dox)的文档生成工具，用于生成一个nodejs结构项目。
 
 
 ### 二、安装
