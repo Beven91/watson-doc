@@ -26,7 +26,10 @@
             var version = pgk.version || '';
             version = version.replace(/\s/g,'')!=''?'('+version+')':'';
         %>
-		<h3 class="title"><%=pgk.name%><span class="version"> <%=version%> &nbsp;&nbsp;</span></h3>
+        <%
+            var mdescription = pgk.description || "";
+        %>
+		<h3 class="title"><%=pgk.name+mdescription%><span class="version"> <%=version%> &nbsp;&nbsp;</span></h3>
 		<ul class="nav">
 
             <% 

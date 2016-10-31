@@ -13,7 +13,7 @@
     "bin": {
         "watson": "./bin/waton"
     },
-    "author": "",
+    "author": "beven",
     "license": "ISC",
     "dependencies": {
         "dox": "^0.9.0",
