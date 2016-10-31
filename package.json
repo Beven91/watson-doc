@@ -1,6 +1,6 @@
 {
     "name": "watsons",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -14,7 +14,7 @@
         "watson": "./bin/watons"
     },
     "author": "beven",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "dox": "^0.9.0",
         "ejs": "^2.5.2",
