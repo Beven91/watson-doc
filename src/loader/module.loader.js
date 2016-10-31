@@ -30,7 +30,7 @@ DocModuleLoader.prototype.load = function(context) {
     }
     //设置pgk
     context.pgk = this.package(context.target);
-    return this.searchModule(targetModule, files, context, context.pgk.dir);
+    return this.searchModule(targetModule, files, context.ext, context.pgk.dir + '\\');
 }
 
 /**
@@ -53,7 +53,7 @@ DocModuleLoader.prototype.searchModule = function(targetModule, files, ext, dir)
         }
         files.push(filename);
         if (itemModule.children.length > 0) {
-            this.searchModule(itemModule, files, ext);
+            this.searchModule(itemModule, files, ext, dir);
         }
     }
     return files;
@@ -70,7 +70,7 @@ DocModuleLoader.prototype.isDoc = function(filename) {
  * 判断指定文件是否能生成文档
  */
 DocModuleLoader.prototype.isDocByExt = function(ext, filename) {
-    var extReg = new RegExp(Dante.string.blankOf(ext, '.js'));
+    var extReg = new RegExp(Dante.string.blankOf(ext, '.js$'));
     var extname = path.extname(filename);
     return extReg.test(extname);
 }

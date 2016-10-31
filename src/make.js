@@ -13,7 +13,7 @@ var ejsCompiler = require('./compiler/ejsCompiler.js');
 var defauls = {
     loader: 'module', //文件加载方式
     target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
-    ext: '.js', //过略文件，默认为.js
+    ext: '.js$', //过略文件，默认为.js
     out: './docs', //文档输出目录，
     pgk: {
         version: '', //文档版本 在loader为module时自动从package.json中取
