@@ -1,24 +1,34 @@
 <div class="method">
-    <h1 class="title fn"><%-ctx.name%></h1>
+    <h1 class="title fn">
+    <i class="circle fn" title="Function">F</i>
+    <%-ctx.name%>
+        <span class="source-link">
+        | source:<a target="_blank" class="source-link-a" href="source/<%=sourcename%>.html#line<%=line%>"><%=sourcename%>,line:<%=line%></a>
+        </span>
+    </h1>
     <div class="description">
         <%-description.full%>
+    </div>
+    <div class="parameters">
+    <h6>函数签名参数：</h6>
+    <%
+        for(var i=0,k=tags.length;i<k;i++){ 
+            var tag = tags[i];
+            if(tag.type=="param"){
+            %>
+                <%-include('parameters.ejs',tag)%>
+    <%
+            }
+        }
+    %>
     </div>
     <%
         for(var i=0,k=tags.length;i<k;i++){ 
             var tag = tags[i];
-            switch(tag.type){
-                case 'param':
-                %>
-                <%-include('parameters.ejs',tag)%>
-                <%
-                break;
-                case 'example':
-                 %>
-                <%-include('example.ejs',tag)%>
-                <%
-                break;
-                default:
-                break;
+            if(tag.type=="example"){
+            %>
+            <%-include('example.ejs',tag)%>
+    <%
             }
         }
     %>

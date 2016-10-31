@@ -17,6 +17,8 @@
     <meta name="apple-mobile-web-app-capabale", content="yes"/>
     <link href="css/layout.css" type="text/css" rel="stylesheet" />
 	<link href="font/font.css" type="text/css" rel="stylesheet" />
+    <link href="css/prettify-jsdoc.css" type="text/css" rel="stylesheet" />
+    <link href="css/prettify-tomorrow.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="layout">
 <div class="layout-header">
@@ -24,7 +26,7 @@
             var version = pgk.version || '';
             version = version.replace(/\s/g,'')!=''?'('+version+')':'';
         %>
-		<h3 class="title"><%=pgk.name%><span class="version">&nbsp;<%=version%> &nbsp;&nbsp;</span></h3>
+		<h3 class="title"><%=pgk.name%><span class="version"> <%=version%> &nbsp;&nbsp;</span></h3>
 		<ul class="nav">
 
             <% 
@@ -34,8 +36,7 @@
                 if (url.replace(/\s/g,'')!=''){
             %>
             <li class="nav-item">
-				<a target="_blank" href="<%=url.replace('git:','http:')%>" >
-					<span class="font mdfont icon-zhishiku"></span>
+				 <a class="repository" target="_blank" href="<%=url.replace('git:','http:').replace('git@','http://')%>" >
 					<span><%=type%></span>
 				</a>
 			</li>
@@ -51,13 +52,16 @@
                 var mModule  = all[i];
                 var cls = mModule.name ===name?"current":""; 
             %>
-                <a class="link <%=cls%>" id="<%=mModule.name%>" href="<%=mModule.name%>.html"><%=mModule.name%></a>
+                <a class="link <%=cls%>" id="<%=mModule.name%>" href="<%=mModule.filebasename%>.html"><%=mModule.name%></a>
             <%}%>
 		</div>
 	</div>
 	<div class="layout-right">
-        <%- include("module.ejs",{items:items})%> 
+        <%- include("module.ejs",{items:items,sourcename:sourcename})%> 
 	</div>
+    <script type="text/javascript" src="scripts/prettify.js"></script>
+    <script type="text/javascript" src="scripts/lang-css.js"></script>
+    <script> prettyPrint(); </script>
 </body>
 </html>
 

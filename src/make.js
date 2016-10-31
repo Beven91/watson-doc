@@ -49,7 +49,7 @@ Maker.prototype.make = function(settings) {
     var moduleList = getAllModules(files, settings);
     //遍历开始
     for (var i = 0, k = moduleList.length; i < k; i++) {
-        makeFile(moduleList[i], settings);
+        makeDocFile(moduleList[i], settings);
     }
     //复制静态资源
     copyStatic(settings);
@@ -92,16 +92,20 @@ function getModule(file, settings) {
     var buf = new String(fs.readFileSync(file));
     var mContext = dox.parseComments(buf);
     var tag = mContext.filter(moduleFilter).shift();
-    var name = tag ? tag.ctx.name : path.basename(file);
+    var name = tag ? tag.ctx.name : dynamicModuleName(mContext, file);
     var declar = mContext.filter(declarationFilter).shift();
     var mModule = {
         pgk: settings.pgk,
         name: name,
         items: mContext,
         originfile: file,
+        sourcename: path.basename(file),
+        filebasename: path.basename(file).replace(path.extname(file), ""),
+        relativePath: path.relative(settings.pgk.dir, file),
+        fullCode: new String(fs.readFileSync(file, null)).replace(/\ufeff/g, ''),
         ctx: {
-            name: declar ? declar.ctx.name : name,
-            description: declar ? declar.ctx.description : ""
+            name: name,
+            description: declar ? declar.description.full : ""
         }
     };
     return mModule;
@@ -112,27 +116,55 @@ function getModule(file, settings) {
  * module 或者function过滤器
  */
 function moduleFilter(m) {
-    return m.ctx && (m.ctx.type == "module" || m.ctx.type == "function");
+    return m.ctx && (m.ctx.type == "module" || (m.ctx.type == "constructor" && m.ctx.name != ""));
+}
+
+/**
+ * 动态推测模块的名称
+ */
+function dynamicModuleName(items, file) {
+    var m = items.filter(function(item) {
+        return item.ctx && item.ctx.type == "method";
+    }).shift();
+    var name = m ? (m.ctx.receiver || m.ctx.constructor) : path.basename(file);
+    if (Dante.type.isFunction(name)) {
+        name = path.basename(file);
+    }
+    return name;
 }
 
 /**
  * declaration 过滤器
  */
 function declarationFilter(m) {
-    return m.ctx && (m.type == 'declaration');
+    return m.ctx && (m.ctx.type == 'declaration');
 }
 
 /**
- * 制作单个js文档
+ * 制作单个js文档html文件
  * @param targetModule 模块数据
  * @param settings  制作配置文件
  */
-function makeFile(targetModule, settings) {
+function makeDocFile(targetModule, settings) {
     var file = path.join(__dirname, '../template/layout.ejs');
     var outDir = path.resolve(settings.out);
-    var outfile = path.resolve(path.join(outDir, targetModule.name + '.html'));
+    var outfile = path.resolve(path.join(outDir, targetModule.filebasename + '.html'));
     ejsCompiler.compile(file, targetModule, outfile);
-    console.log('maked file:' + targetModule.originfile);
+    console.log('maked doc file     >>      ' + targetModule.relativePath);
+    makeSourceFile(targetModule, settings);
+}
+
+/**
+ * 制作单个js源代码文件
+ * @param targetModule 模块数据
+ * @param settings  制作配置文件
+ */
+function makeSourceFile(targetModule, settings) {
+    var file = path.join(__dirname, '../template/source.ejs');
+    var outDir = path.resolve(settings.out);
+    var outfile = path.resolve(path.join(outDir, 'source', targetModule.sourcename + '.html'));
+    ejsCompiler.compile(file, targetModule, outfile);
+    console.log('maked source file  >>      ' + targetModule.relativePath);
 }
 
 /**

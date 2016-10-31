@@ -1,11 +1,19 @@
 <div class="module">
-    <h1 class="title"><%-ctx.name%></h1>
+    <h1 class="title">
+    <i class="circle module" title="Module">M</i>
+    <%-ctx.name%><span class="source-link">
+        | source:<a target="_blank" class="source-link-a" href="source/<%=sourcename%>.html"><%=sourcename%></a>
+        </span>
+    </h1>
+    <%if((ctx.description||"").replace(/\s/g,'')!=''){%>
     <div class="description block">
         <%-ctx.description%>
     </div>
+    <%}%>
     <div class="methods">
         <% for(var i=0,k=items.length;i<k;i++){
                 var item = items[i];
+                item.sourcename =sourcename;
                 if(item.ctx && item.ctx.type=="method"){%>
                     <%-include('method.ejs',item)%>
                 <%}%>

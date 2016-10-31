@@ -1,41 +1,65 @@
-
 html {
-    font-family: sans-serif; /* 1 */
-    -ms-text-size-adjust: 100%; /* 2 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+    font-family: sans-serif;
+    /* 1 */
+    -ms-text-size-adjust: 100%;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
 }
-* html, * html body {
+
+* html,
+* html body {
     background-image: url(about:blank);
     background-attachment: fixed;
 }
-html, body {
+
+html,
+body {
     overflow: hidden;
     height: 100%;
 }
-ul, li, h1, h2, h3, h4, h5, h6 {
+
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0px;
 }
-a, a:hover {
+
+a,
+a:hover {
     text-decoration: none;
 }
-h1, h2, .doc-content-main, .nav-list li a {
+
+h1,
+h2,
+.doc-content-main,
+.nav-list li a {
     color: #333333;
 }
+
 h1 {
-    font-size: 32px;
     font-weight: 200;
     margin: 35px 0px;
 }
-body, html {
+
+body,
+html {
     height: 100%;
     margin: 0px;
     overflow: hidden;
-    font-family: '微软雅黑', sans-serif;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .layout {
-    background-color: #E4E3E3;
+    background-color: #fff;
+    color: #333;
 }
+
 .layout .icon {
     font-family: "docfont" !important;
     font-size: 16px;
@@ -43,53 +67,63 @@ body, html {
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
-    color: #fff;
 }
-.layout .layout-header, .footer {
+
+.layout .layout-header,
+.footer {
     position: absolute;
     left: 0px;
     right: 0px;
-    _width: 100%; /*ie6*/
+    _width: 100%;
+    /*ie6*/
 }
+
 .layout .layout-header {
     top: 0px;
     height: 60px;
-    background: #9b59b6;
+    background-color: #eff3f5;
+    border-bottom: 1px solid #e5e5e5;
     overflow: hidden;
     padding: 0px 5px;
     text-indent: 20px;
-    color: #fff;
     line-height: 60px;
 }
+
 .layout .layout-header .title {
     float: left;
     font-weight: 600;
+    color: #34495e;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     cursor: default;
 }
-.layout .layout-left,.layout .layout-right{
+
+.layout .layout-left,
+.layout .layout-right,
+.layout .layout-content {
     top: 60px;
     bottom: 0px;
     left: 0px;
     padding: 0px;
     position: absolute;
-    overflow-y:auto;
+    overflow-y: auto;
 }
-.layout .layout-left{
+
+.layout .layout-left {
     width: 400px;
-    padding-top: 40px;
+    padding-top: 20px;
     margin: 0px 0px 0px 0px;
     overflow: auto;
 }
-.layout .layout-right{
-    left:400px;
-    right: 25px;
+
+.layout .layout-right {
+    left: 400px;
+    right: 0px;
     padding: 20px 30px;
-    background:#fff;
 }
+
 .layout .nav {
     list-style: none;
     float: right;
@@ -97,7 +131,6 @@ body, html {
     margin-right: 50px;
     font-size: 17px;
     font-weight: 200;
-    color: #fff;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -106,12 +139,11 @@ body, html {
 }
 
 .layout .nav .nav-item a {
-    color: #fff;
     text-decoration: none;
 }
 
-.layout  .nav .nav-item:hover {
-    background-color: #835097;
+.layout .nav .nav-item:hover {
+    background-color: #f6f5f5;
 }
 
 .layout .nav .nav-item {
@@ -121,82 +153,209 @@ body, html {
     cursor: pointer;
     transition: background .3s ease-in-out;
 }
-.layout .manifest{
+
+.layout .manifest {
     width: 280px;
     float: right;
+    border-bottom: 1px solid #E4E3E3
 }
-.layout .manifest .link{
-    display:block;
+
+.layout .manifest .link {
+    display: block;
     height: 40px;
     line-height: 40px;
     text-indent: 20px;
+    color: #333;
     border: 1px solid #E4E3E3;
-    transition:background .5s;
+    border-bottom: 0px;
+    transition: background .5s;
+    background: #eff3f5;
+    color: #34495e;
 }
-.layout .manifest .link.classify{
-    background: #9b59b6;
-    color: #fff;
+
+.layout .source-link {
+    font-size: 17px;
+    margin: 0px 0px 0px 30px;
+    float: right;
 }
-.layout .manifest .link:hover,.layout .manifest .link.current{
-    background:#fff;
+
+.layout .source-link .source-link-a {
+    margin: 0px 0px 0px 3px;
+}
+
+.layout .manifest .link.classify {
+    background: #f7f7f7;
+}
+
+.layout .manifest .link:hover,
+.layout .manifest .link.current {
+    background: #fff;
     cursor: pointer;
 }
-.layout .manifest .link.classify:hover{
-    background:#9b59b6;
-    cursor:default;
+
+.layout .manifest .link.classify:hover {
+    background: #f7f7f7;
+    cursor: default;
 }
-.layout .module .title{
+
+.layout .module .title {
     border-bottom: 1px solid #ccc;
     font-size: 26px;
     font-weight: 200;
     margin: 35px 0px;
 }
-.layout .module .block{
-    border: 1px solid #ccc;
-    background: #E9E5E5;
+
+.layout .module .block {
+    border: 1px solid #c9e6f2;
+    background: #f2f9fc;
+    padding: 10px;
     padding: 10px;
 }
-.layout .module .methods{
-    padding:30px 0px 40px 30px;
+
+.layout .module .methods {
+    padding: 30px 0px 40px 30px;
 }
-.layout .module .method{
-    padding:10px;
+
+.layout .module .method {
+    padding: 10px;
+    margin: 0px 0px 80px 0px;
 }
-.layout .module .method .title{
+
+.layout .module .method .title {
     font-size: 24px;
     font-weight: 200;
     margin: 10px 0px;
     border-bottom: 1px dashed #ccc;
     margin-bottom: 30px;
 }
-.layout .module .method .description{
+
+.layout .module .method .description {
     padding: 15px 8px;
     color: black;
-    background-color: #f7f7f9;
-    border: 1px solid #e1e1e8;
+    background-color: #fbfeff;
+    border: 1px solid #d8eef7;
     white-space: nowrap;
 }
-.layout .module .method .code{
+
+.layout .module .method .code {
     display: block;
     font-size: 13px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    margin:20px 0px;
-    overflow:hidden;
+    margin: 20px 0px;
+    overflow: hidden;
 }
-.layout .module .method .code .code-inner{
+
+.layout .module .method .code .code-inner {
     font-size: 14px;
-    padding: 16px;
     color: #f8f8f8;
     background: #181818;
 }
-.layout .module .method .parameters{
-    margin:10px 0px;
+
+.layout .module .method .parameters {
+    margin: 40px 0px 40px 15px;
+    overflow: hidden;
 }
-.layout .module .method .parameters .parameter{
-    
+
+.layout .module h6 {
+    font-style: normal;
+}
+
+.layout .repository {
+    font-size: 24px;
+}
+
+.layout .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 17px;
+    background: #036eb8;
+    color: #fff;
+    font-style: normal;
+    margin: 0px 5px 0px 0px;
+    float: left;
+}
+
+.layout .circle.fn {}
+
+.layout .circle.param {
+    margin-top: -5px;
+}
+
+.layout .circle.example {
+    margin-top: -5px;
+}
+
+.layout .circle.module {}
+
+.layout .module .prettyprint {
+    margin: 0px;
+    border: 0px;
+}
+
+.layout .module .method .parameters .parameter {
+    margin: 5px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.layout .module .method .parameters .parameter p {
+    margin: 0px;
+}
+
+.layout .module .method .parameters .parameter .cell {
+    float: left;
+    margin-right: 5px;
+}
+
+.layout .description.block hr {
+    display: none;
+}
+
+
+/*
+        source css
+*/
+
+.layout.layout-source {
+    background: #fff;
+}
+
+.layout-source .layout-content {
+    left: none;
+    width: 100%;
+    padding: 20px 0px 0px 0px;
+}
+
+.layout-source .file-source {
+    width: 980px;
+    margin: 0px auto;
+}
+
+.layout-source .file-source .file-header {
+    height: 43px;
+    width: 1030px;
+    line-height: 43px;
+    border: 1px solid #ddd;
+    border-radius: 2px 5px 0px 0px;
+    padding: 5px 10px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d8d8d8;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom: 0px;
+}
+
+.layout-source .file-source .source {
+    background: #fff;
+    margin-top: 0px;
 }
