@@ -1,6 +1,6 @@
 {
-    "name": "ls-watson",
-    "version": "1.0.2",
+    "name": "watons",
+    "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -8,10 +8,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@10.21.11.251:f2e/watson.git"
+        "url": "https://github.com/Beven91/watsons.git"
     },
     "bin": {
-        "watson": "./bin/ls-waton"
+        "watson": "./bin/watons"
     },
     "author": "beven",
     "license": "ISC",

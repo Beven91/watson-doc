@@ -12,14 +12,14 @@
      
 ### 三、用例
 	
-    全局模式：
-            watson 
+    全局安装模式：
+            watsons
 
-    本地使用：
+    项目内安装模式：
 
-            var watson = require('watson');
+            var watsons = require('watsons');
 
-            watson.make({
+            watsons.make({
                 loader: 'module', //文件加载方式 目前支持 module 或者 dir
                 target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
                 ext: '.js$', //过滤文件，默认为.js
