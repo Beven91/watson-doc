@@ -5,7 +5,7 @@
  * 描述：以cmd规范方式加载module返回该模块需要生成的文档的文件列表
  *******************************************************/
 var path = require('path');
-var Dante = require('dante');
+var Dante = require('dantes');
 var BaseLoader = require('./base.loader.js');
 
 /**

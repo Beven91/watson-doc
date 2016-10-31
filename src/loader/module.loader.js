@@ -6,7 +6,7 @@
  *******************************************************/
 var path = require('path');
 var fs = require('fs');
-var Dante = require('dante');
+var Dante = require('dantes');
 var BaseLoader = require('./base.loader.js');
 
 /**
