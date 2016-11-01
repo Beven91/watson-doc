@@ -1,6 +1,6 @@
 {
     "name": "watson-doc",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -11,7 +11,7 @@
         "url": "git+https://github.com/Beven91/watson-doc.git"
     },
     "bin": {
-        "watsons": "./bin/watson-doc"
+        "watson-doc": "./bin/watson-doc"
     },
     "author": "beven",
     "license": "MIT",
