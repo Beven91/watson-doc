@@ -1,3 +1,7 @@
 var watson = require('./src/make.js')
 
-module.exports = watson;
+
+watson.make({
+    target: 'dantes'
+});
+//module.exports = watson;

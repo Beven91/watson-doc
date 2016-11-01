@@ -113,7 +113,9 @@ function getModule(file, settings) {
         sourcename: path.basename(file),
         filebasename: path.basename(file).replace(path.extname(file), ""),
         relativePath: path.relative(settings.pgk.dir, file),
-        fullCode: new String(fs.readFileSync(file, null)).replace(/\ufeff/g, ''),
+        fullCode: new String(fs.readFileSync(file, {
+            encoding: 'utf8'
+        })),
         ctx: {
             name: name,
             description: declar ? declar.description.full : ""
