@@ -4,12 +4,12 @@
  * 版本：0.0.1
  * 描述：提供加载器规范
  *******************************************************/
-var Dante = require('dantes');
+var Dante = require('dantejs');
 
 /**
  * 基类构造函数
  */
-function DocCommonLoader() { }
+function DocCommonLoader() {}
 
 /**
  * 根据传入参数加载文档资源
@@ -17,7 +17,7 @@ function DocCommonLoader() { }
  * 
  * @returns files 文件路径数组
  */
-DocCommonLoader.prototype.load = function () {
+DocCommonLoader.prototype.load = function() {
     throw new Error("请实现文件加载功能");
 }
 
@@ -25,8 +25,8 @@ DocCommonLoader.prototype.load = function () {
  * 派生出一个加载器类
  * @param SubClass 子类
  */
-DocCommonLoader.driver = function(SubClass){
-  return  Dante.Base.extend(DocCommonLoader,SubClass);
+DocCommonLoader.driver = function(SubClass) {
+    return Dante.Base.extend(DocCommonLoader, SubClass);
 }
 
 module.exports = DocCommonLoader;

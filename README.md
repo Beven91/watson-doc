@@ -7,21 +7,21 @@
 
 ### 二、安装
 
-    npm install watsons -g
+    npm install watson-doc -g
 
     或者
 
-    npm install watsons --save-dev
+    npm install watson-doc --save-dev
     
      
 ### 三、用例
 	
     全局安装模式：
-            watsons
+            watson-doc
 
     项目内安装模式：
 
-            var watsons = require('watsons');
+            var watsons = require('watson-doc');
 
             watsons.make({
                 loader: 'module', //文件加载方式 目前支持 module 或者 dir

@@ -7,7 +7,7 @@ var dox = require('dox');
 var fs = require('fs');
 var ncp = require('ncp').ncp;
 var path = require('path');
-var Dante = require('dantes');
+var Dante = require('dantejs');
 var ejsCompiler = require('./compiler/ejsCompiler.js');
 
 var defauls = {
