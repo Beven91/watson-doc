@@ -37,9 +37,12 @@
                 var type=repository.type;
                 var url = repository.url || '';
                 if (url.replace(/\s/g,'')!=''){
+                    if(url.indexOf("git@")>-1){
+                        url = url.replace(":","/").replace("git@","http://");
+                    }
             %>
             <li class="nav-item">
-				 <a class="repository" target="_blank" href="<%=url.replace('git:','http:').replace('git@','http://')%>" >
+				 <a class="repository" target="_blank" href="<%=url.replace('git:','http:')%>" >
 					<span><%=type%></span>
 				</a>
 			</li>
