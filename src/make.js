@@ -25,7 +25,15 @@ var defauls = {
 /**
  * 文档构建器构造函数
  */
-function Maker() {}
+function Maker() {
+    this.init();
+}
+
+
+/**
+ * 初始化配置
+ */
+Maker.prototype.init = function() {}
 
 /**function 
  * 根据传入配置制作文档
@@ -92,7 +100,10 @@ function getModule(file, settings) {
     var buf = new String(fs.readFileSync(file));
     var mContext = dox.parseComments(buf);
     var tag = mContext.filter(moduleFilter).shift();
-    var name = tag ? tag.ctx.name : dynamicModuleName(mContext, file);
+    var name = dynamicModuleParam(mContext);
+    if (!name) {
+        name = tag ? tag.ctx.name : dynamicModuleName(mContext, file);
+    }
     var declar = mContext.filter(declarationFilter).shift();
     var mModule = {
         pgk: settings.pgk,
@@ -113,10 +124,10 @@ function getModule(file, settings) {
 
 
 /**
- * module 或者function过滤器
+ * constructor过滤器
  */
 function moduleFilter(m) {
-    return m.ctx && (m.ctx.type == "module" || (m.ctx.type == "constructor" && m.ctx.name != ""));
+    return m.ctx && (m.ctx.type == "constructor" && m.ctx.name != "");
 }
 
 /**
@@ -134,10 +145,37 @@ function dynamicModuleName(items, file) {
 }
 
 /**
+ * 从tag列表中获取@module 参数
+ */
+function dynamicModuleParam(items) {
+    var name = null;
+    var item = null;
+    for (var i = 0, k = items.length; i < k; i++) {
+        item = items[i];
+        var tags = item.tags.filter(paramFilter('module'));
+        if (tags.length > 0) {
+            name = tags.pop().string || item.ctx.name;
+            break;
+        }
+    }
+    return name;
+}
+
+/**
  * declaration 过滤器
  */
 function declarationFilter(m) {
     return m.ctx && (m.ctx.type == 'declaration');
+}
+
+/**
+ * tag  过滤标签
+ * @param type tag类型
+ */
+function paramFilter(type) {
+    return function(tag) {
+        return tag.type == type;
+    }
 }
 
 /**

@@ -80,11 +80,18 @@ DocModuleLoader.prototype.isDocByExt = function(ext, filename) {
  * @param targetExports 目标exports对象
  */
 DocModuleLoader.prototype.findModuleByExports = function(targetExports) {
-    var currentModule = module;
-    var finder = function(m) {
-        return m.exports === targetExports;
-    };
-    return currentModule.children.filter(finder).shift();
+    var currentModule = null;
+    var cacheModules = require.cache;
+    var keys = Object.keys(cacheModules);
+    var itemModule = null;
+    for (var i = 0, k = keys.length; i < k; i++) {
+        itemModule = cacheModules[keys[i]];
+        if (itemModule.exports == targetExports) {
+            currentModule = itemModule;
+            break;
+        }
+    }
+    return currentModule;
 }
 
 /**
