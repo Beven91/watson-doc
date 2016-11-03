@@ -14,6 +14,7 @@ var defauls = {
     loader: 'module', //文件加载方式
     target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
     ext: '.js$', //过滤文件，默认为.js
+    exclude: ['/dist/', '/test/', '/grunt/', 'Gruntfile.js', 'docs'], //过滤目录
     out: './docs', //文档输出目录，
     pgk: {
         version: '', //文档版本 在loader为module时自动从package.json中取
@@ -68,12 +69,14 @@ Maker.prototype.make = function(settings) {
  * @param context 加载上下文
  */
 function loader(context) {
+    var CommonLoader = null;
     switch (context.loader) {
         case 'module':
-            return require('./loader/module.loader.js').load(context);
+            CommonLoader = require('./loader/module.loader.js');
         default:
-            return require('./loader/dir.loader.js').load(context);
+            CommonLoader = require('./loader/dir.loader.js');
     }
+    return (new CommonLoader(context)).load();
 }
 
 /**

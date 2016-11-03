@@ -61,7 +61,7 @@ html {
 }
 
 .layout .icon {
-    font-family: "docfont" !important;
+    font-family: "iconfont" !important;
     font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -185,6 +185,7 @@ html {
 
 .layout .manifest .link.classify {
     background: #f7f7f7;
+    text-decoration: none;
 }
 
 .layout .manifest .link:hover,
@@ -217,9 +218,27 @@ html {
 }
 
 .layout .module .method {
-    padding: 10px;
-    margin: 0px 0px 80px 0px;
+    transition: all .5s;
 }
+
+.layout .module .method.expand {
+    margin: 0px 0px 80px 0px;
+    padding: 10px;
+}
+
+.layout .module .method .up {
+    display: none;
+}
+
+.layout .module .method.expand .down {
+    display: none;
+}
+
+.layout .module .method.expand .up {
+    display: inline;
+}
+
+.layout .module .method .method-inner {}
 
 .layout .module .method .title {
     font-size: 24px;
@@ -227,6 +246,7 @@ html {
     margin: 10px 0px;
     border-bottom: 1px dashed #ccc;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .layout .module .method .description {
@@ -358,6 +378,10 @@ html {
 .layout-source .file-source .source {
     background: #fff;
     margin-top: 0px;
+}
+
+.layout .repository .github {
+    font-size: 32px;
 }
 
 ::-webkit-scrollbar-track-piece {

@@ -10,6 +10,7 @@ var pkg = require('../package');
 var watson = require('../index.js');
 
 var baseDir = process.cwd();
+var packagefile = path.join(baseDir, 'package.json');
 
 // options
 program
@@ -26,4 +27,9 @@ program
 program.parse(process.argv);
 
 program.target = program.target || baseDir;
+
+if (!program.loader && !fs.existsSync(packagefile)) {
+    program.loader = 'dir';
+}
+
 watson.make(program);

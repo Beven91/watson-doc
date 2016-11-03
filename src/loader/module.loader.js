@@ -11,8 +11,12 @@ var BaseLoader = require('./base.loader.js');
 
 /**
  * 模块加载构造函数
+ * @param settings 配置参数  格式如下: {target:'/ss/s',ext:'.js'}
  */
-function DocModuleLoader() {}
+function DocModuleLoader(settings) {
+    this.settings = settings;
+}
+
 
 //继承于基础加载器
 BaseLoader.driver(DocModuleLoader);
@@ -21,8 +25,8 @@ BaseLoader.driver(DocModuleLoader);
  * 加载指定模块需要生成文档的资源列表
  * @param context 配置参数  格式如下: {target:'module_name',ext:'.js'}
  */
-DocModuleLoader.prototype.load = function(context) {
-    this.settings = context;
+DocModuleLoader.prototype.load = function() {
+    var context = this.settings;
     var targetModule = this.getModule(context.target);
     var files = [];
     if (this.isDoc(targetModule.filename)) {
@@ -30,17 +34,16 @@ DocModuleLoader.prototype.load = function(context) {
     }
     //设置pgk
     context.pgk = this.package(context.target);
-    return this.searchModule(targetModule, files, context.ext, context.pgk.dir + '\\');
+    return this.searchModule(targetModule, files, context.pgk.dir + '\\');
 }
 
 /**
  * 搜索指定模块中所有的子模块路径
  * @param targetModule module对象
  * @param files 文件接收容器
- * @param ext 允许的模块资源文件类型 默认 .js 可以填写正则表达式
  * @param dir 当前模块的根目录
  */
-DocModuleLoader.prototype.searchModule = function(targetModule, files, ext, dir) {
+DocModuleLoader.prototype.searchModule = function(targetModule, files, dir) {
     var children = targetModule.children;
     var itemModule = null;
     var filename = null;
@@ -48,32 +51,18 @@ DocModuleLoader.prototype.searchModule = function(targetModule, files, ext, dir)
     for (var i = 0, k = children.length; i < k; i++) {
         itemModule = children[i];
         filename = itemModule.filename;
-        if (filename.indexOf(moduleDirNM) > -1 || filename.indexOf(dir) < 0 || !this.isDocByExt(ext, filename)) {
+        if (filename.indexOf(moduleDirNM) > -1 || filename.indexOf(dir) < 0 || !this.isDoc(filename) || this.isExclude(filename)) {
             continue;
         }
         files.push(filename);
         if (itemModule.children.length > 0) {
-            this.searchModule(itemModule, files, ext, dir);
+            this.searchModule(itemModule, files, dir);
         }
     }
     return files;
 }
 
-/**
- * 根据当前loader配置判断指定文件是否能生成文档
- */
-DocModuleLoader.prototype.isDoc = function(filename) {
-    return this.isDocByExt(this.settings.ext, filename);
-}
 
-/**
- * 判断指定文件是否能生成文档
- */
-DocModuleLoader.prototype.isDocByExt = function(ext, filename) {
-    var extReg = new RegExp(Dante.string.blankOf(ext, '.js$'));
-    var extname = path.extname(filename);
-    return extReg.test(extname);
-}
 
 /**
  * 在当前模块的子模块中查找指定exports对应的module
@@ -118,7 +107,7 @@ DocModuleLoader.prototype.package = function(name) {
         dir: dir
     }
     if (!fs.existsSync(pgkfile)) {
-        pgkfile = getPgkfile(path.join(dir, 'package.json'));
+        pgkfile = this.searchPgkfile(path.join(dir, 'package.json'));
     }
     if (fs.existsSync(pgkfile)) {
         pgk = require(pgkfile);
@@ -127,24 +116,7 @@ DocModuleLoader.prototype.package = function(name) {
     return pgk;
 }
 
-function getPgkfile(filename) {
-    filename = filename.replace(/\//g, '\\');
-    var pname = null;
-    var seg = null;
-    while (!fs.existsSync(filename)) {
-        pname = path.basename(filename);
-        if (pname == "node_modules") {
-            break;
-        }
-        seg = (path.dirname(filename)).split('\\');
-        if (seg.length <= 1) {
-            break;
-        }
-        seg.pop();
-        filename = path.join(seg.join("\\"), "package.json");
-    }
-    return filename;
-}
+
 
 //公布加载器
-module.exports = new DocModuleLoader();
+module.exports = DocModuleLoader;

@@ -1,11 +1,12 @@
 <div class="method">
-    <h1 class="title fn">
+    <h1 class="title fn" click="toggleMethod">
     <i class="circle fn" title="Function">F</i>
     <%-ctx.name%>
         <span class="source-link">
         | source:<a target="_blank" class="source-link-a" href="source/<%=sourcename%>.html#line<%=line%>"><%=sourcename%>,line:<%=line%></a>
         </span>
     </h1>
+    <div class="method-inner" style="display:none">
     <div class="description">
         <%-description.full%>
     </div>
@@ -32,4 +33,5 @@
             }
         }
     %>
+    </div>
 </div>
