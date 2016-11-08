@@ -34,7 +34,7 @@ DocModuleLoader.prototype.load = function() {
     }
     //设置pgk
     context.pgk = this.package(context.target);
-    return this.searchModule(targetModule, files, context.pgk.dir + '\\');
+    return this.searchModule(targetModule, files, path.join(context.pgk.dir, '/'));
 }
 
 /**

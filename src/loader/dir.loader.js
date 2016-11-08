@@ -31,7 +31,7 @@ DocDirLoader.prototype.load = function() {
     context.exclude.push(path.resolve(context.out));
     //设置pgk
     context.pgk = this.package(context.target);
-    return this.searchDir(dir, files, context.pgk.dir + '\\');
+    return this.searchDir(dir, files, path.join(context.pgk.dir, '/'));
 }
 
 /**
