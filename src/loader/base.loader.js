@@ -58,7 +58,7 @@ DocCommonLoader.prototype.searchPgkfile = function(filename) {
  * 判断指定文件是否能生成文档
  */
 DocCommonLoader.prototype.isDocByExt = function(ext, filename) {
-    var extReg = new RegExp(Dante.string.blankOf(ext, '.js$'));
+    var extReg = new RegExp(Dante.String.blankOf(ext, '.js$'));
     var extname = path.extname(filename);
     return extReg.test(extname);
 }
@@ -78,8 +78,8 @@ DocCommonLoader.prototype.isDoc = function(filename) {
 DocCommonLoader.prototype.isExclude = function(dir) {
     var excludes = '(' + (this.settings.exclude || []).join('|').replace(/\//g, "\\\\") + ')';
     dir = dir.replace(/\//g, "\\");
-    dir = Dante.string.ensureEndsWith(dir, "\\");
-    var extReg = new RegExp(Dante.string.blankOf(excludes, ''));
+    dir = Dante.String.ensureEndsWith(dir, "\\");
+    var extReg = new RegExp(Dante.String.blankOf(excludes, ''));
     return extReg.test(dir);
 }
 
