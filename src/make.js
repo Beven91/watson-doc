@@ -48,7 +48,7 @@ Maker.prototype.init = function() {}
  */
 Maker.prototype.make = function(settings) {
     //参数默认处理
-    settings = Dante.fn.doAssign({}, defauls, settings);
+    settings = Dante.Fn.doAssign({}, defauls, settings);
     //加载要生成文档的资源
     var files = loader(settings);
     var context = {
@@ -143,7 +143,7 @@ function dynamicModuleName(items, file) {
         return item.ctx && item.ctx.type == "method";
     }).shift();
     var name = m ? (m.ctx.receiver || m.ctx.constructor) : path.basename(file);
-    if (Dante.type.isFunction(name)) {
+    if (Dante.Type.isFunction(name)) {
         name = path.basename(file);
     }
     return name;
