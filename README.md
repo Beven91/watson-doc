@@ -49,7 +49,9 @@
 
 ### 五、生成效果
  
-    ![image](https://github.com/Beven91/watson-doc/raw/master/screenshots/doc.jpg)
+    ![image](https://github.com/Beven91/watson-doc/raw/master/screenshots/index.jpg)
+    ![image](https://github.com/Beven91/watson-doc/raw/master/screenshots/fun.jpg)
+    ![image](https://github.com/Beven91/watson-doc/raw/master/screenshots/source.jpg)
   
 
 ### 六、开源许可
