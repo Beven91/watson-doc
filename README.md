@@ -2,9 +2,7 @@
 
 ### 一、简介
 
-基于[dox](https://github.com/tj/dox)的文档生成工具，用于生成一个nodejs结构项目。
-
-
+基于[dox](https://github.com/tj/dox)的文档生成工具，支持nodejs模块文档生成，以及纯Js结构目录文档生成。
 ### 二、安装
 
     npm install watson-doc -g
