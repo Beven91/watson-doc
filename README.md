@@ -2,9 +2,7 @@
 
 ### 一、简介
 
-基于[dox](https://github.com/tj/dox)的文档生成工具，用于生成一个nodejs结构项目。
-
-
+基于[dox](https://github.com/tj/dox)的文档生成工具，支持nodejs模块文档生成，以及纯Js结构目录文档生成。
 ### 二、安装
 
     npm install watson-doc -g
@@ -49,7 +47,10 @@
     * **pgk.title** 文档标题
     * **pgk.repository** 版本库
 
-     
+### 五、生成效果
+ 
+    ![image](https://github.com/Beven91/watson-doc/raw/master/screenshots/doc.jpg)
+  
 
-### 五、开源许可
+### 六、开源许可
 基于 [MIT License](http://zh.wikipedia.org/wiki/MIT_License) 开源，使用代码只需说明来源，或者引用 [license.txt](https://github.com/sofish/typo.css/blob/master/license.txt) 即可。
