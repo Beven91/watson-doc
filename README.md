@@ -18,7 +18,7 @@
             watson-doc
 
     项目内安装模式：
-
+```js
             var watsons = require('watson-doc');
 
             watsons.make({
@@ -33,7 +33,7 @@
                     repository: null
                 }
             });
-
+```
     
       
 ### 四、参数解释
