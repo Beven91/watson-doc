@@ -14,29 +14,33 @@
      
 ### 三、用例
 	
-    全局安装模式：
-            watson-doc
+全局安装模式CLI：
 
-    项目内安装模式：
+     watson-doc (-t -n -o 参见 命令行参数)
 
-            var watsons = require('watson-doc');
+项目内安装模式：
 
-            watsons.make({
-                loader: 'module', //文件加载方式 目前支持 module 或者 dir
-                target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
-                ext: '.js$', //过滤文件，默认为.js
-                out: './docs', //文档输出目录，
-                //pgk 默认读取package.json
-                pgk: {
-                    version: '', //文档版本 在loader为module时自动从package.json中取
-                    title: '', //文档标题 在loader为module时自动从package.json中取
-                    repository: null
-                }
-            });
+```js
+
+    var watsons = require('watson-doc');
+
+    watsons.make({
+        loader: 'module', //文件加载方式 目前支持 module 或者 dir
+        target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
+        ext: '.js$', //过滤文件，默认为.js
+        out: './docs', //文档输出目录，
+        //pgk 默认读取package.json
+        pgk: {
+            version: '', //文档版本 在loader为module时自动从package.json中取
+            title: '', //文档标题 在loader为module时自动从package.json中取
+            repository: null
+        }
+    });
+```
 
     
       
-### 四、参数解释
+### 四、命令行参数解释
 
 * **loader** 文件加载方式 目前支持 module 或者 dir
 * **target** 如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
@@ -48,6 +52,7 @@
     * **pgk.repository** 版本库
 
 ### 五、生成效果
+
     ![image](https://raw.githubusercontent.com/Beven91/watson-doc/master/screenshots/index.png)
     ![image](https://raw.githubusercontent.com/Beven91/watson-doc/master/screenshots/fun.png)
     ![image](https://raw.githubusercontent.com/Beven91/watson-doc/master/screenshots/source.png)
