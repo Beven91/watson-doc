@@ -1,5 +1,7 @@
 ## watson
 
+[![NPM version][npm-image]][npm-url]
+
 ### 一、简介
 
 基于[dox](https://github.com/tj/dox)的文档生成工具，支持nodejs模块文档生成，以及纯Js结构目录文档生成。
@@ -21,21 +23,20 @@
 本地安装代码用例：
 
 ```js
+var watsons = require('watson-doc');
 
-    var watsons = require('watson-doc');
-
-    watsons.make({
-        loader: 'module', //文件加载方式 目前支持 module 或者 dir
-        target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
-        ext: '.js$', //过滤文件，默认为.js
-        out: './docs', //文档输出目录，
-        //pgk 默认读取package.json
-        pgk: {
-            version: '', //文档版本 在loader为module时自动从package.json中取
-            title: '', //文档标题 在loader为module时自动从package.json中取
-            repository: null
-        }
-    });
+watsons.make({
+    loader: 'module', //文件加载方式 目前支持 module 或者 dir
+    target: '', //如果loader是module则设置nodejs 模块名称,如果Loader为dir则为目录路径
+    ext: '.js$', //过滤文件，默认为.js
+    out: './docs', //文档输出目录，
+    //pgk 默认读取package.json
+    pgk: {
+        version: '', //文档版本 在loader为module时自动从package.json中取
+        title: '', //文档标题 在loader为module时自动从package.json中取
+        repository: null
+    }
+});
 ```
 
 ### 四、命令行参数解释
@@ -58,3 +59,6 @@
 
 ### 六、开源许可
 基于 [MIT License](http://zh.wikipedia.org/wiki/MIT_License) 开源，使用代码只需说明来源，或者引用 [license.txt](https://github.com/sofish/typo.css/blob/master/license.txt) 即可。
+
+[npm-url]: https://www.npmjs.com/package/react-native-on-web
+[npm-image]: https://img.shields.io/npm/v/react-native-on-web.svg
