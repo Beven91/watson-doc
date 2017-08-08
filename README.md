@@ -60,5 +60,5 @@ watsons.make({
 ### 六、开源许可
 基于 [MIT License](http://zh.wikipedia.org/wiki/MIT_License) 开源，使用代码只需说明来源，或者引用 [license.txt](https://github.com/sofish/typo.css/blob/master/license.txt) 即可。
 
-[npm-url]: https://www.npmjs.com/package/react-native-on-web
-[npm-image]: https://img.shields.io/npm/v/react-native-on-web.svg
+[npm-url]: https://www.npmjs.com/package/watson-doc
+[npm-image]: https://img.shields.io/npm/v/watson-doc.svg
